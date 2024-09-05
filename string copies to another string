@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <string.h>
+
+void copy_string(char dest[], char src[]) {
+    strcpy(dest, src);
+}
+
+int main() {
+    char original_s[] = "Hello, World!";
+    char copied_s[20];
+
+    copy_string(copied_s, original_s);
+    printf("%s\n", copied_s);  // Hello, World!
+
+    return 0;
+}
