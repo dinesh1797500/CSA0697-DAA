@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+void multiply_matrices(int mat1[][3], int mat2[][3], int result[][3], int rows_mat1, int cols_mat1, int rows_mat2, int cols_mat2) {
+    // Check if the matrices can be multiplied
+    if (cols_mat1 != rows_mat2) {
+        printf("Matrices cannot be multiplied\n");
+        return;
+    }
+
+    // Multiply the matrices
+    for (int i = 0; i < rows_mat1; i++) {
+        for (int j = 0; j < cols_mat2; j++) {
+            result[i][j] = 0;
+            for (int k = 0; k < cols_mat1; k++) {
+                result[i][j] += mat1[i][k] * mat2[k][j];
+            }
+        }
+    }
+}
+
+void print_matrix(int mat[][3], int rows, int cols) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int mat1[2][3] = {{1, 2, 3}, {4, 5, 6}};
+    int mat2[3][2] = {{7, 8}, {9, 10}, {11, 12}};
+    int result[2][2];
+
+    multiply_matrices(mat1, mat2, result, 2, 3, 3, 2);
+    print_matrix(result, 2, 2);
+
+    return 0;
+}
